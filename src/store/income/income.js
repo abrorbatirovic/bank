@@ -10,21 +10,22 @@ const income = createSlice({
         ]
     },
     reducers: {
-        getIncome: (state,action)=>{
+        getIncome: (state, action) => {
             state.income = action.payload
         },
-        saveIncome: (state,action)=>{
+        saveIncome: (state, action) => {
+            console.log(action.payload)
             state.income.push({
-                id: action.payload.id,
+                id: state.income.length + 1,
                 userId: action.payload.userId,
                 price: action.payload.price,
                 kassaId: action.payload.kassaId,
-                date: action.payload.kassaId
+                date: action.payload.date
             })
         },
-        editIncome: (state, action)=>{
-            state.income.forEach(item=>{
-                if(item.id === action.payload.id){
+        editIncome: (state, action) => {
+            state.income.forEach(item => {
+                if (item.id === action.payload.id) {
                     item.userId = action.payload.userId
                     item.price = action.payload.price
                     item.kassaId = action.payload.kassaId
@@ -32,10 +33,9 @@ const income = createSlice({
                 }
             })
         },
-        deleteIncome: (state,action)=>{
-            console.log(action.payload)
-            state.income.forEach((item,index)=>{
-                if(item.id === action.payload) {
+        deleteIncome: (state, action) => {
+            state.income.forEach((item, index) => {
+                if (item.id === action.payload) {
                     state.income.splice(index, 1)
                 }
             })

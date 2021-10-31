@@ -1,3 +1,14 @@
+.switch-button{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.switch-button a{
+    text-decoration: none;
+}
+
+
 .card-income{
     padding: 20px;
 }

@@ -7,7 +7,7 @@ function SwitchButton() {
     return (
         <div className={'switch-button'}>
             {pageName.map((item, index) => <Link to={item} key={index}>
-                <Button>{item}</Button>
+                <Button color="primary" variant="contained">{item}</Button>
             </Link>)}
         </div>
     )

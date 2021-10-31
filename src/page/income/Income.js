@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Add from "../../buttons/Add";
 import Modal from './component/Modal'
 import Thead from './component/Thead'
@@ -11,8 +11,7 @@ function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
 
     const [modalVisible, setModalVisible] = useState(false)
     const [edit, setEdit] = useState('')
-    const [id, setId] = useState(3)
-
+    console.log(income)
     function toggle() {
         setEdit('')
         setModalVisible(prev => !prev)
@@ -27,10 +26,8 @@ function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
         if (edit) {
             editIncome({...values, id: edit.id})
         } else {
-            setId(prev => prev + 1)
             saveIncome({
-                id: id,
-                uesrId: parseInt(values.userId),
+                userId: parseInt(values.userId),
                 kassaId: parseInt(values.kassaId),
                 price: values.price,
                 date: values.date

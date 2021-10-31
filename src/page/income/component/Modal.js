@@ -20,8 +20,8 @@ function Modal({toggle, edit, submit, user, kassa}){
                 </AvForm>
             </div>
             <div className={'card-header'}>
-                <Button onClick={toggle}>Отменить</Button>
-                <Button type={'submit'} form={'form-income'}>Сохронить</Button>
+                <Button variant="contained" color="secondary" onClick={toggle}>Отменить</Button>
+                <Button variant="contained" color="primary" type={'submit'} form={'form-income'}>Сохронить</Button>
             </div>
         </div>
     )

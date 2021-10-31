@@ -1,3 +1,5 @@
+import Button from "@material-ui/core/Button";
+
 function Add({pageName, toggle}) {
     return(
         <div className={'row'}>
@@ -5,7 +7,7 @@ function Add({pageName, toggle}) {
                 <h1 className={'text-center'}>{pageName}</h1>
             </div>
             <div className={'col-md-3'}>
-                <button onClick={toggle} className={'btn btn-outline-primary'}>+ Add</button>
+                <Button color="primary" variant="contained" onClick={toggle}>+ Add</Button>
             </div>
         </div>
     )
