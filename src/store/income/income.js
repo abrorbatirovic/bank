@@ -33,8 +33,9 @@ const income = createSlice({
             })
         },
         deleteIncome: (state,action)=>{
+            console.log(action.payload)
             state.income.forEach((item,index)=>{
-                if(item.id === action.payload.id) {
+                if(item.id === action.payload) {
                     state.income.splice(index, 1)
                 }
             })

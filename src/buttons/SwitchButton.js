@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom';
-import Button from '@material-ui/core'
+import Button from '@material-ui/core/Button';
+
 const pageName = ['доход', 'расход', 'касса', 'пользователь']
 
 function SwitchButton() {
-    return(
+    return (
         <div className={'switch-button'}>
-            {pageName.map((item,index)=><Link to={item}>
+            {pageName.map((item, index) => <Link to={item} key={index}>
                 <Button>{item}</Button>
             </Link>)}
         </div>

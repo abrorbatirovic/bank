@@ -1,20 +1,20 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-const exspense = createSlice({
-    name: 'income',
+const expense = createSlice({
+    name: 'expense',
     initialState: {
-        income: [
-            {id: 1, userId: 1, price: 1000, kassaId: 2, date: '21.10.2021'},
-            {id: 2, userId: 2, price: 1500, kassaId: 1, date: '22.10.2021'},
-            {id: 3, userId: 1, price: 2000, kassaId: 3, date: '25.10.2021'},
+        expense: [
+            {id: 1, userId: 2, price: 1000, kassaId: 1, date: '20.10.2021'},
+            {id: 2, userId: 1, price: 1500, kassaId: 2, date: '21.10.2021'},
+            {id: 3, userId: 3, price: 2000, kassaId: 3, date: '23.10.2021'},
         ]
     },
     reducers: {
-        getIncome: (state,action)=>{
-            state.income = action.payload
+        getExpense: (state, action) => {
+            state.expense = action.payload
         },
-        saveIncome: (state,action)=>{
-            state.income.push({
+        saveExpense: (state, action) => {
+            state.expense.push({
                 id: action.payload.id,
                 userId: action.payload.userId,
                 price: action.payload.price,
@@ -22,9 +22,9 @@ const exspense = createSlice({
                 date: action.payload.kassaId
             })
         },
-        editIncome: (state, action)=>{
-            state.income.forEach(item=>{
-                if(item.id === action.payload.id){
+        editExpense: (state, action) => {
+            state.expense.forEach(item => {
+                if (item.id === action.payload.id) {
                     item.userId = action.payload.userId
                     item.price = action.payload.price
                     item.kassaId = action.payload.kassaId
@@ -32,16 +32,16 @@ const exspense = createSlice({
                 }
             })
         },
-        deleteIncome: (state,action)=>{
-            state.income.forEach((item,index)=>{
-                if(item.id === action.payload.id) {
-                    state.income.splice(index, 1)
+        deleteExpense: (state, action) => {
+            state.expense.forEach((item, index) => {
+                if (item.id === action.payload.id) {
+                    state.expense.splice(index, 1)
                 }
             })
         }
     }
 })
 
-export const {getIncome, saveIncome, editIncome, deleteIncome} = income.actions
+export const {getExpense, saveExpense, editExpense, deleteExpense} = expense.actions
 
-export default income.reducer
+export default expense.reducer
