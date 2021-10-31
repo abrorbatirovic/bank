@@ -1,0 +1,16 @@
+.card{
+  cursor: pointer;
+}
+
+.card:hover{
+  box-shadow: 0 0 10px;
+}
+
+.card-post{
+  height: 300px;
+}
+
+#todo-check{
+  transform: scale(2);
+  margin: 0 1rem;
+}
