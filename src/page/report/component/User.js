@@ -8,7 +8,6 @@ function User({match, income, expense, user}) {
 
     return (
         <div className={'col-md-6 offset-3'}>
-
             <h1>One Page</h1>
             <div className={'card'}>
                 <ul className={'list-group'}>
@@ -21,7 +20,6 @@ function User({match, income, expense, user}) {
                     </li>)}
                 </ul>
             </div>
-
         </div>
     )
 }

@@ -8,7 +8,9 @@ function Tbody({user,kassa,item,index, selectItem, deleteIncome}) {
         return arr[0].name
     }
     function kassaId(){
-        const arr = kassa.filter(data => data.id === item.userId)
+        const arr = kassa.filter(data => data.id === item.kassaId)
+        console.log(item.kassaId)
+        console.log(arr[0].name)
         return arr[0].name
     }
 

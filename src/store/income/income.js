@@ -8,6 +8,7 @@ const income = createSlice({
             {id: 2, userId: 2, price: 1500, kassaId: 1, date: '22.10.2021'},
             {id: 3, userId: 1, price: 2000, kassaId: 3, date: '25.10.2021'},
             {id: 4, userId: 3, price: 2000, kassaId: 1, date: '25.10.2021'},
+            {id: 5, userId: 2, price: 2000, kassaId: 1, date: '25.10.2021'},
         ]
     },
     reducers: {
