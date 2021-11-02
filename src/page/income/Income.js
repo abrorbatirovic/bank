@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import Add from "../../buttons/Add";
 import Modal from './component/Modal'
 import Thead from './component/Thead'
@@ -11,7 +11,7 @@ function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
 
     const [modalVisible, setModalVisible] = useState(false)
     const [edit, setEdit] = useState('')
-    console.log(income)
+
     function toggle() {
         setEdit('')
         setModalVisible(prev => !prev)
@@ -29,7 +29,7 @@ function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
             saveIncome({
                 userId: parseInt(values.userId),
                 kassaId: parseInt(values.kassaId),
-                price: values.price,
+                price: parseInt(values.price) ,
                 date: values.date
             })
         }
@@ -39,7 +39,7 @@ function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
     return (
         <div className={'row'}>
             <div className={`${modalVisible ? 'col-md-8' : 'col-md-12'}`}>
-                <div className={'card card-income'}>
+                <div className={'card card-padding'}>
                     <Add pageName={pageName} toggle={toggle}/>
                     <Thead income={income} user={user} kassa={kassa} selectItem={selectItem} deleteIncome={deleteIncome}/>
                 </div>

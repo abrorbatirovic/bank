@@ -15,7 +15,7 @@ const kassa = createSlice({
         },
         saveKassa: (state, action) => {
             state.kassa.push({
-                id: action.payload.id,
+                id: state.kassa.length + 1,
                 name: action.payload.name,
             })
         },
@@ -28,7 +28,9 @@ const kassa = createSlice({
         },
         deleteKassa: (state, action) => {
             state.kassa.forEach((item, index) => {
-                state.kassa.splice(index, 1)
+                if(item.id === action.payload){
+                    state.kassa.splice(index, 1)
+                }
             })
         }
 

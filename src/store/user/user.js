@@ -15,7 +15,7 @@ const user = createSlice({
         },
         saveUser: (state,action)=>{
             state.user.push({
-                id: action.payload.id,
+                id: state.user.length + 1,
                 name: action.payload.name,
             })
         },
@@ -28,7 +28,7 @@ const user = createSlice({
         },
         deleteUser: (state,action)=>{
             state.user.forEach((item,index)=>{
-                if(item.id === action.payload.id) {
+                if(item.id === action.payload) {
                     state.user.splice(index, 1)
                 }
             })

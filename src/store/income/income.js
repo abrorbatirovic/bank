@@ -7,6 +7,7 @@ const income = createSlice({
             {id: 1, userId: 1, price: 1000, kassaId: 2, date: '21.10.2021'},
             {id: 2, userId: 2, price: 1500, kassaId: 1, date: '22.10.2021'},
             {id: 3, userId: 1, price: 2000, kassaId: 3, date: '25.10.2021'},
+            {id: 4, userId: 3, price: 2000, kassaId: 1, date: '25.10.2021'},
         ]
     },
     reducers: {
@@ -14,7 +15,6 @@ const income = createSlice({
             state.income = action.payload
         },
         saveIncome: (state, action) => {
-            console.log(action.payload)
             state.income.push({
                 id: state.income.length + 1,
                 userId: action.payload.userId,

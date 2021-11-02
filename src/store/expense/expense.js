@@ -10,21 +10,21 @@ const expense = createSlice({
         ]
     },
     reducers: {
-        getExpense: (state, action) => {
+        getExpense: (state,action)=>{
             state.expense = action.payload
         },
-        saveExpense: (state, action) => {
+        saveExpense:(state,action)=>{
             state.expense.push({
-                id: action.payload.id,
+                id: state.expense.length + 1,
                 userId: action.payload.userId,
                 price: action.payload.price,
                 kassaId: action.payload.kassaId,
-                date: action.payload.kassaId
+                date: action.payload.date
             })
         },
-        editExpense: (state, action) => {
-            state.expense.forEach(item => {
-                if (item.id === action.payload.id) {
+        editExpense: (state,action)=>{
+            state.expense.forEach((item,index)=>{
+                if(item.id === action.payload.id){
                     item.userId = action.payload.userId
                     item.price = action.payload.price
                     item.kassaId = action.payload.kassaId
@@ -32,10 +32,10 @@ const expense = createSlice({
                 }
             })
         },
-        deleteExpense: (state, action) => {
-            state.expense.forEach((item, index) => {
-                if (item.id === action.payload.id) {
-                    state.expense.splice(index, 1)
+        deleteExpense:(state,action)=>{
+            state.expense.forEach((item,index)=>{
+                if(item.id === action.payload){
+                    state.expense.splice(index,1)
                 }
             })
         }

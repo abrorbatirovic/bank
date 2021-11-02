@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-const pageName = ['доход', 'расход', 'касса', 'пользователь']
+const pageName = ['доход', 'расход', 'касса', 'пользователь', 'отчет']
 
 function SwitchButton() {
     return (
