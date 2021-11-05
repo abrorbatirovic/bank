@@ -4,11 +4,12 @@ import Add from "../../buttons/Add";
 import Modal from './component/Modal'
 import Thead from './component/Thead'
 import {saveIncome, editIncome, deleteIncome} from '../../store/income/income'
+import {toast} from "react-hot-toast";
 
 const pageName = 'Доходы'
 
 function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
-
+    console.log(income)
     const [modalVisible, setModalVisible] = useState(false)
     const [edit, setEdit] = useState('')
 
@@ -26,14 +27,17 @@ function Income({income, user, kassa, saveIncome, editIncome, deleteIncome}) {
         if (edit) {
             editIncome({...values, id: edit.id})
         } else {
-            saveIncome({
-                userId: parseInt(values.userId),
-                kassaId: parseInt(values.kassaId),
-                price: parseInt(values.price) ,
-                date: values.date
-            })
+            if(values.userId !== '' && values.kassaId !== '' && values.price !== '' && values.date !== ''){
+                saveIncome({
+                    userId: parseInt(values.userId),
+                    kassaId: parseInt(values.kassaId),
+                    price: parseInt(values.price) ,
+                    date: values.date,
+                })
+                toggle()
+            }
+            else toast.error('Заполните все строки!')
         }
-        toggle()
     }
 
     return (

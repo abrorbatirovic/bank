@@ -15,3 +15,36 @@
 .card-body form div {
     margin: 5px 0;
 }
+
+.bg-income{
+    color: royalblue;
+}
+.bg-expense{
+    color: #d71212;
+}
+
+.date{
+    font-size: 16px;
+    margin-top: 10px;
+    float: right;
+    color: #000000;
+}
+
+.user-table{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 30px 0 10px 0;
+}
+
+.user-table a{
+    text-decoration: none;
+}
+
+.user-table button{
+    width: 300px;
+}
+
+.list{
+    list-style: none;
+}

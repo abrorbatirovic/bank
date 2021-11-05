@@ -1,14 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit'
-
+import {toast} from 'react-hot-toast'
 const income = createSlice({
     name: 'income',
     initialState: {
         income: [
-            {id: 1, userId: 1, price: 1000, kassaId: 2, date: '21.10.2021'},
-            {id: 2, userId: 2, price: 1500, kassaId: 1, date: '22.10.2021'},
-            {id: 3, userId: 1, price: 2000, kassaId: 3, date: '25.10.2021'},
-            {id: 4, userId: 3, price: 2000, kassaId: 1, date: '25.10.2021'},
-            {id: 5, userId: 2, price: 2000, kassaId: 1, date: '25.10.2021'},
+            {id: 1, userId: 1, price: 1000, kassaId: 2, date: '2021-10-21', typeName: true},
+            {id: 2, userId: 2, price: 1500, kassaId: 1, date: '2021-10-22', typeName: true},
+            {id: 3, userId: 1, price: 2000, kassaId: 3, date: '2021-10-25', typeName: true},
         ]
     },
     reducers: {
@@ -16,13 +14,8 @@ const income = createSlice({
             state.income = action.payload
         },
         saveIncome: (state, action) => {
-            state.income.push({
-                id: state.income.length + 1,
-                userId: action.payload.userId,
-                price: action.payload.price,
-                kassaId: action.payload.kassaId,
-                date: action.payload.date
-            })
+            state.income.push({id:state.income.length + 1, ...action.payload, typeName: true})
+            toast.success('Доход был реализован')
         },
         editIncome: (state, action) => {
             state.income.forEach(item => {
@@ -33,6 +26,7 @@ const income = createSlice({
                     item.date = action.payload.date
                 }
             })
+            toast.success('Информация изменена')
         },
         deleteIncome: (state, action) => {
             state.income.forEach((item, index) => {
@@ -40,6 +34,7 @@ const income = createSlice({
                     state.income.splice(index, 1)
                 }
             })
+            toast.success('Данные удалены')
         }
     }
 })

@@ -4,6 +4,7 @@ import {saveUser, editUser, deleteUser} from "../../store/user/user";
 import Add from '../../buttons/Add'
 import Table from './component/Table'
 import Modal from './component/Modal'
+import {toast} from "react-hot-toast";
 
 const pageName = 'Пользователь'
 
@@ -26,7 +27,11 @@ function User({user, saveUser, editUser, deleteUser}) {
         if (edit) {
             editUser({...values, id: edit.id})
         } else {
-            saveUser(values)
+            if(values.name !== ''){
+                saveUser(values)
+                toggle()
+            }
+            else toast.error('Заполните все строки!')
         }
     }
 

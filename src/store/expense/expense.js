@@ -1,12 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {toast} from "react-hot-toast";
 
 const expense = createSlice({
     name: 'expense',
     initialState: {
         expense: [
-            {id: 1, userId: 2, price: 1000, kassaId: 1, date: '20.10.2021'},
-            {id: 2, userId: 1, price: 1500, kassaId: 2, date: '21.10.2021'},
-            {id: 3, userId: 3, price: 2000, kassaId: 3, date: '23.10.2021'},
+            {id: 1, userId: 2, price: 1000, kassaId: 1, date: '2021-10-20', typeName: false},
+            {id: 2, userId: 1, price: 1500, kassaId: 2, date: '2021-10-21', typeName: false},
+            {id: 3, userId: 3, price: 2000, kassaId: 3, date: '2021-10-23', typeName: false},
         ]
     },
     reducers: {
@@ -14,13 +15,8 @@ const expense = createSlice({
             state.expense = action.payload
         },
         saveExpense:(state,action)=>{
-            state.expense.push({
-                id: state.expense.length + 1,
-                userId: action.payload.userId,
-                price: action.payload.price,
-                kassaId: action.payload.kassaId,
-                date: action.payload.date
-            })
+            state.expense.push({id: state.expense.length + 1, ...action.payload, typeName: false})
+            toast.success('Расход был реализован')
         },
         editExpense: (state,action)=>{
             state.expense.forEach((item,index)=>{
@@ -31,6 +27,7 @@ const expense = createSlice({
                     item.date = action.payload.date
                 }
             })
+            toast.success('Информация изменена')
         },
         deleteExpense:(state,action)=>{
             state.expense.forEach((item,index)=>{
@@ -38,6 +35,7 @@ const expense = createSlice({
                     state.expense.splice(index,1)
                 }
             })
+            toast.success('Данные удалены')
         }
     }
 })

@@ -1,4 +1,3 @@
-import {connect} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import SwitchButton from './buttons/SwitchButton';
 import Income from "./page/income/Income";
@@ -7,17 +6,18 @@ import User from './page/user/User';
 import Kassa from './page/kassa/Kassa';
 import Report from "./page/report/Report";
 import OnePage from './page/report/component/User';
+import Table from './page/report/component/Table'
 
-function App({income, expense, user}) {
+function App() {
     return (
         <div className={'container'}>
 
             <SwitchButton/>
+            <hr/>
 
             <Switch>
-                <Route path={'/отчет/касса/:id'}
-                       render={(props) =>
-                           <OnePage {...props} income={income} expense={expense} user={user}/>}/>
+                <Route path={'/отчет/касса/:id'} component={OnePage}/>
+                <Route path={'/отчет/касса/клиент'} component={Table}/>
                 <Route path={'/доход'} component={Income}/>
                 <Route path={'/расход'} component={Expense}/>
                 <Route path={'/пользователь'} component={User}/>
@@ -28,10 +28,4 @@ function App({income, expense, user}) {
     )
 }
 
-export default connect((state) => {
-    return {
-        income: state.income.income,
-        expense: state.expense.expense,
-        user: state.user.user
-    }
-})(App)
+export default App

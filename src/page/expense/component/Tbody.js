@@ -9,7 +9,7 @@ function Tbody({item,index,user,kassa,selectItem,deleteExpense}){
         return arr[0].name
     }
     function kassaId(){
-        const arr = kassa.filter(data => data.id === item.userId)
+        const arr = kassa.filter(data => data.id === item.kassaId)
         return arr[0].name
     }
 

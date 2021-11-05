@@ -1,6 +1,7 @@
 import Button from '@material-ui/core/Button';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+
 function Tbody({user,kassa,item,index, selectItem, deleteIncome}) {
 
     function userId(){
@@ -9,8 +10,6 @@ function Tbody({user,kassa,item,index, selectItem, deleteIncome}) {
     }
     function kassaId(){
         const arr = kassa.filter(data => data.id === item.kassaId)
-        console.log(item.kassaId)
-        console.log(arr[0].name)
         return arr[0].name
     }
 

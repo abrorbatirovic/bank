@@ -1,27 +1,33 @@
+import {connect} from 'react-redux'
+import Table from './Table'
+
 function User({match, income, expense, user}) {
-
-    let iD = parseInt(match.params.id)
-
-    function incomeUser() {
-        return income.filter(item => item.kassaId === iD)
-    }
 
     return (
         <div className={'col-md-6 offset-3'}>
-            <h1>One Page</h1>
-            <div className={'card'}>
-                <ul className={'list-group'}>
-                    {incomeUser().map(item => <li className={'list-group-item'} key={item.id}>
-                        {user.map(data => {
-                            if (item.userId === data.id) {
-                                return <h5>{data.name}</h5>
-                            }
-                        })}
-                    </li>)}
-                </ul>
-            </div>
+            <table className={'table text-center table-bordered'}>
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Пользователь</th>
+                    <th>Оплаты</th>
+                    <th>Общий баланс</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    user.map((item,index)=><Table key={index} item={item} index={index} income={income} expense={expense} />)
+                }
+                </tbody>
+            </table>
         </div>
-    )
+    );
 }
 
-export default User
+export default connect((state) => {
+    return {
+        income: state.income.income,
+        expense: state.expense.expense,
+        user: state.user.user
+    }
+})(User)

@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {toast} from "react-hot-toast";
 
 const kassa = createSlice({
     name: 'kassa',
@@ -14,10 +15,8 @@ const kassa = createSlice({
             state.kassa = action.payload
         },
         saveKassa: (state, action) => {
-            state.kassa.push({
-                id: state.kassa.length + 1,
-                name: action.payload.name,
-            })
+            state.kassa.push({id: state.kassa.length + 1, ...action.payload})
+            toast.success('Добавлено новый кассовый аппарат')
         },
         editKassa: (state, action) => {
             state.kassa.forEach(item => {
@@ -25,6 +24,7 @@ const kassa = createSlice({
                     item.name = action.payload.name
                 }
             })
+            toast.success('Информация изменена')
         },
         deleteKassa: (state, action) => {
             state.kassa.forEach((item, index) => {
@@ -32,6 +32,7 @@ const kassa = createSlice({
                     state.kassa.splice(index, 1)
                 }
             })
+            toast.success('Данные удалены')
         }
 
     }

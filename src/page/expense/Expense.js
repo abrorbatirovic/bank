@@ -4,6 +4,7 @@ import Add from "../../buttons/Add";
 import Modal from './component/Modal'
 import Thead from './component/Thead'
 import {saveExpense, editExpense, deleteExpense} from "../../store/expense/expense";
+import {toast} from "react-hot-toast";
 
 const pageName = 'Расходы'
 
@@ -26,14 +27,17 @@ function Expense({expense, user, kassa, saveExpense,editExpense,deleteExpense}) 
         if (edit) {
             editExpense({...values, id: edit.id})
         } else {
-            saveExpense({
-                userId: parseInt(values.userId),
-                kassaId: parseInt(values.kassaId),
-                price: parseInt(values.price),
-                date: values.date
-            })
+            if(values.userId !== '' && values.kassaId !== '' && values.price !== '' && values.date !== ''){
+                saveExpense({
+                    userId: parseInt(values.userId),
+                    kassaId: parseInt(values.kassaId),
+                    price: parseInt(values.price),
+                    date: values.date,
+                })
+                toggle()
+            }
+            else toast.error('Заполните все строки!')
         }
-        toggle()
     }
 
     return (

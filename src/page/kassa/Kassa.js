@@ -4,6 +4,7 @@ import {saveKassa, editKassa, deleteKassa} from "../../store/kassa/kassa";
 import Add from "../../buttons/Add";
 import Table from "./component/Table";
 import Modal from "./component/Modal";
+import {toast} from "react-hot-toast";
 
 const pageName = 'Касса'
 
@@ -26,9 +27,12 @@ function Kassa({kassa,saveKassa, editKassa, deleteKassa}) {
         if (edit) {
             editKassa({...values, id: edit.id})
         } else {
-            saveKassa(values)
+            if(values.name !== ''){
+                saveKassa(values)
+                toggle()
+            }
+            else toast.error('Заполните все строки!')
         }
-        toggle()
     }
 
     return (

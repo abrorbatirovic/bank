@@ -6,7 +6,7 @@ const pageName = ['доход', 'расход', 'касса', 'пользова�
 function SwitchButton() {
     return (
         <div className={'switch-button'}>
-            {pageName.map((item, index) => <Link to={item} key={index}>
+            {pageName.map((item, index) => <Link to={'/'+item} key={index}>
                 <Button color="primary" variant="contained">{item}</Button>
             </Link>)}
         </div>

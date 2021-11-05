@@ -7,7 +7,7 @@ function Add({pageName, toggle}) {
                 <h1 className={'text-center'}>{pageName}</h1>
             </div>
             <div className={'col-md-3'}>
-                <Button color="primary" variant="contained" onClick={toggle}>+ Add</Button>
+                <Button color="primary" variant="contained" onClick={toggle}>+ Добавить</Button>
             </div>
         </div>
     )

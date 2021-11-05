@@ -10,7 +10,7 @@ function Modal({toggle, edit, submit, user, kassa}){
             <div className={'card-body'}>
                 <AvForm onSubmit={submit} id={'form-income'} model={edit ? edit : {}} >
                     <AvField type={'select'} name={'userId'}>
-                        {user.map(item=> <option value={item.id} key={item.id}>{item.name}</option>)}
+                        {user.map((item)=> <option value={item.id} key={item.id}>{item.name}</option>)}
                     </AvField>
                     <AvField type={'select'} name={'kassaId'}>
                         {kassa.map(item=> <option value={item.id} key={item.id}>{item.name}</option>)}
